@@ -1,0 +1,8 @@
+Description:
+    Explain the generator
+
+Example:
+    rails generate i18n_lazy_lookup Thing
+
+    This will create:
+        what/will/it/create
