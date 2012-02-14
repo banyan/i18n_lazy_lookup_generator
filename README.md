@@ -32,9 +32,9 @@ Also, Rails [recommends](http://guides.rubyonrails.org/i18n.html#organization-of
 
 ## Usage
 
-i18n_lazy_lookup:install generate files with controller name
+`i18n_lazy_lookup:install` generate files with controller name
 
-    `$ rails g i18n_lazy_lookup:install`
+    $ rails g i18n_lazy_lookup:install
           create  config/locales/views
           create  config/locales/views/comments
           create  config/locales/views/comments/en.yml
@@ -62,6 +62,13 @@ You can specify controller and action names with `i18n_lazy_lookup`
       create  config/locales/views/foo/en.yml
       create  config/locales/views/foo/ja.yml
 
+YAML will be like as below `config/locales/views/foo/ja.yml`
+
+    ja:
+      foo:
+        index:
+        show:
+
 The default locale is `en`, but you can overide it in `config/application.rb`
 
     # Customize generators
@@ -72,4 +79,5 @@ The default locale is `en`, but you can overide it in `config/application.rb`
 ## TODO
 
 + Adapt controller namespace.
-+ controller and scaffold hooks.
++ Create controller and scaffold hooks.
++ Add spec. also fixing code as well.
