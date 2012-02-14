@@ -1,10 +1,11 @@
 # I18n lazy lookup generator (for Rails 3)
 
-## WTF?
+## WTF lazy lookup?
 
-"Lazy Lookup" which gives us a convenient way to look up the locale inside views.
+Rails has a way called "Lazy Lookup" in i18n.
+it gives us a convenient way to look up the locale inside views.
 
-When you have the following yaml:
+See when you have the following yaml:
 
     es:
       books:
@@ -29,6 +30,39 @@ Also, Rails [recommends](http://guides.rubyonrails.org/i18n.html#organization-of
     |-----es.rb
     |-----en.rb
 
-## Example
+## Usage
+
+i18n_lazy_lookup:install generate files with controller name
+
+    $ rails g i18n_lazy_lookup:install
+          create  config/locales/views
+          create  config/locales/views/comments
+          create  config/locales/views/comments/en.yml
+          create  config/locales/views/comments/ja.yml
+          create  config/locales/views/posts
+          create  config/locales/views/posts/en.yml
+          create  config/locales/views/posts/ja.yml
+
+If file exists, it leaves.
+
+    $ r g i18n_lazy_lookup:install
+           exist  config/locales/views
+           exist  config/locales/views/comments
+       identical  config/locales/views/comments/en.yml
+       identical  config/locales/views/comments/ja.yml
+           exist  config/locales/views/posts
+       identical  config/locales/views/posts/en.yml
+       identical  config/locales/views/posts/ja.yml
+
+You can specify controller and action names.
+
+    $ r g i18n_lazy_lookup foo index show
+       exist  config/locales/views
+      create  config/locales/views/foo
+      create  config/locales/views/foo/en.yml
+      create  config/locales/views/foo/ja.yml
 
 ## TODO
+
+Adapt controller namespace.
+controller and scaffold hooks.
