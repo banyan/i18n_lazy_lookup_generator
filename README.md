@@ -81,3 +81,4 @@ The default locale is `en`, but you can overide it in `config/application.rb`
 + Adapt controller namespace.
 + Create controller and scaffold hooks.
 + Add spec. also fixing code as well.
++ Add gemspec to use as gem.
