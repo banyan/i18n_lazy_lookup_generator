@@ -2,7 +2,7 @@ require 'find'
 
 module I18nLazyLookup
   module Generators
-    class InstallGenerator < ::Rails::Generators::Base
+    class GenerateGenerator < ::Rails::Generators::Base
       source_root File.expand_path('../../templates', __FILE__)
       class_option :locales, default: %w(en)
       class_option :exclude_patterns, default: %w(layouts shared).join('|')
