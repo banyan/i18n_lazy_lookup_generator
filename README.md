@@ -32,9 +32,9 @@ Also, Rails [recommends](http://guides.rubyonrails.org/i18n.html#organization-of
 
 ## Usage
 
-`i18n_lazy_lookup:install` generate files with controller name
+`i18n_lazy_lookup:generate` generates files with controller name
 
-    $ rails g i18n_lazy_lookup:install
+    $ rails g i18n_lazy_lookup:generate
           create  config/locales/views
           create  config/locales/views/comments
           create  config/locales/views/comments/en.yml
@@ -45,7 +45,7 @@ Also, Rails [recommends](http://guides.rubyonrails.org/i18n.html#organization-of
 
 If file exists, it leaves.
 
-    $ r g i18n_lazy_lookup:install
+    $ r g i18n_lazy_lookup:generate
            exist  config/locales/views
            exist  config/locales/views/comments
        identical  config/locales/views/comments/en.yml
