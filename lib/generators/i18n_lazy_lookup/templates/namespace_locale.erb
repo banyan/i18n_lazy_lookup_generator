@@ -1,0 +1,6 @@
+<%= @locale %>:
+  <%= @namespace %>:
+    <%= @controller %>:
+      <%- @actions.each do |action| -%>
+      <%= action %>:
+      <%- end -%>

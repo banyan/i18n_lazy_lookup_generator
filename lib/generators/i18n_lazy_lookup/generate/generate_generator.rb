@@ -12,9 +12,9 @@ module I18nLazyLookup
 
         controller_action_map = {}
         Find.find(File.join('app/views')) do |path|
-          if path =~ /app\/views\/?(.*)?\/(.*)\/(.*)\.html\.[erb|haml]/
-            namespace, controller, action  = $1, $2, $3
-            next if action =~ /^_/
+          if path =~ /app\/views\/(.*)\/(.*)\.html\.[erb|haml]/
+            controller, action = $1, $2 # controller include namaspace as well
+            next if action     =~ /^_/
             next if controller =~ /#{options[:exclude_patterns]}/
             if controller_action_map.key?(controller)
               controller_action_map[controller] << action
@@ -25,19 +25,24 @@ module I18nLazyLookup
         end
 
         controller_action_map.each do |controller, actions|
-          create_dirs(controller, actions)
+          if controller =~ /\//
+            namespace, controller = controller.split('/')
+            empty_directory File.join(view_path, namespace, controller)
+          else
+            empty_directory File.join(view_path, controller)
+          end
           options[:locales].each do |locale|
             @locale     = locale
             @controller = controller
             @actions    = actions
-            template 'locale.erb', File.join(view_path, controller, "#{locale}.yml")
+            if namespace.nil?
+              template 'locale.erb', File.join(view_path, controller, "#{locale}.yml")
+            else
+              @namespace = namespace
+              template 'namespace_locale.erb', File.join(view_path, namespace, controller, "#{locale}.yml")
+            end
           end
         end
-      end
-
-      private
-      def create_dirs(controller, actions)
-        empty_directory File.join(view_path, controller)
       end
 
       def view_path
