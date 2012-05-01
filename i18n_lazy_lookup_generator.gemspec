@@ -1,21 +1,21 @@
 # -*- encoding: utf-8 -*-
-$:.push File.expand_path('../lib', __FILE__)
-require 'i18n_lazy_lookup_generator/version'
+require File.expand_path('../lib/i18n_lazy_lookup_generator/version', __FILE__)
 
-Gem::Specification.new do |s|
-  s.name              = 'i18n_lazy_lookup_generator'
-  s.version           = I18nLazyLookupGenerator::VERSION
-  s.platform          = Gem::Platform::RUBY
-  s.authors           = ['Kohei Hasegawa']
-  s.email             = 'ameutau@gmail.com'
-  s.homepage          = 'https://github.com/banyan/i18n_lazy_lookup_generator'
-  s.summary           = 'Generates I18n lazy lookup locale files for Rails 3'
-  s.description       = 'A Rails generator plugin & gem that generates Rails I18n lazy lookup locale files.'
-  s.rubyforge_project = 'i18n_lazy_lookup_generator'
-  s.files             = `git ls-files`.split("\n")
-  s.test_files        = `git ls-files -- {test,spec,features}/*`.split("\n")
-  s.executables       = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
-  s.require_paths     = ['lib']
-  s.licenses          = ['MIT']
-  s.add_development_dependency "rspec", "~> 2.6"
+Gem::Specification.new do |gem|
+  gem.authors           = ["Kohei Hasegawa"]
+  gem.email             = ["ameutau@gmail.com"]
+  gem.summary           = %q{Generates I18n lazy lookup locale files for Rails 3}
+  gem.description       = %q{A Rails generator plugin & gem that generates Rails I18n lazy lookup locale files.}
+  gem.homepage          = 'https://github.com/banyan/i18n_lazy_lookup_generator'
+
+  gem.rubyforge_project = 'i18n_lazy_lookup_generator'
+  gem.files             = `git ls-files`.split($\)
+  gem.executables       = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
+  gem.test_files        = gem.files.grep(%r{^(test|spec|features)/})
+  gem.name              = "i18n_lazy_lookup_generator"
+  gem.require_paths     = ["lib"]
+  gem.licenses          = ['MIT']
+  gem.version           = I18nLazyLookupGenerator::VERSION
+
+  gem.add_development_dependency "rspec", "~> 2.9"
 end
